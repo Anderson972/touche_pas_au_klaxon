@@ -1,0 +1,10 @@
+/vendor/
+.DS_Store
+.env
+
+.vscode/
+.idea/
+
+.phpunit.cache/
+.phpstan/
+*.log
