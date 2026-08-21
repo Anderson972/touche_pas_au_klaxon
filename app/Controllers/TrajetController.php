@@ -59,4 +59,13 @@ class TrajetController
         require __DIR__.'/../../Template/form_ride.php';
 
     }
+
+    public function homeConnected()
+    {
+        session_start();
+
+        $trajetModel = new TrajetModel();
+        $rides = $trajetModel -> findRides();
+        require __DIR__.'/../../Template/connected.php';
+    }
 };
