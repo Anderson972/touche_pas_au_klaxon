@@ -34,7 +34,7 @@ class TrajetController
             $_POST['gdh_arrivee'],
             $_POST['agence_depart'],
             $_POST['agence_arrivee'],
-            $_POST['auteur'],
+            $_SESSION['id_user'],
             $_POST['place_totale']
         );
 
