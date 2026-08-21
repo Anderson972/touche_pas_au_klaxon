@@ -4,13 +4,14 @@ namespace Anderson\TouchePasAuKlaxon\Controllers;
 
 use Anderson\TouchePasAuKlaxon\Models\TrajetModel;
 use Anderson\TouchePasAuKlaxon\Models\AgenceModel;
+use Anderson\TouchePasAuKlaxon\Core\Access;
 use DateTime;
 
 class TrajetController
 {
     public function create()
     {
-        session_start();
+        Access::usersAccess();
 
         $depart = new \DateTime($_POST['gdh_depart']);
         $arrivee = new \DateTime($_POST['gdh_arrivee']);
@@ -50,7 +51,7 @@ class TrajetController
 
     public function dataForm()
     {
-        session_start();
+        Access::usersAccess();
 
         $agenceModel = new AgenceModel();
 
@@ -62,7 +63,7 @@ class TrajetController
 
     public function homeConnected()
     {
-        session_start();
+        Access::usersAccess();
 
         $trajetModel = new TrajetModel();
         $rides = $trajetModel -> findRides();
