@@ -44,6 +44,10 @@ $router -> post('/login', function(){
     $AuthController = new AuthController();
     $AuthController -> login();
 });
+$router -> get('/logout', function(){
+    $AuthController = new AuthController();
+    $AuthController -> logout();
+});
 
 // Route accueil utilisateur connecté
 $router -> get('/connected', function(){ 
