@@ -26,5 +26,25 @@ class TrajetModel
             ':place_dispo' => $place_totale
         ]);
     }
+
+    public function findRides()
+    {
+        $pdo = Database::getConnection();
+
+        $sql = "SELECT 
+            dep.villes AS ville_depart,
+            T.GDH_depart,
+            arr.villes AS ville_arrivee,
+            T.GDH_arrivee,
+            T.nb_places_dispo
+            FROM Trajets T
+            JOIN Agences dep ON T.fk_id_agences_depart = dep.id_agences
+            JOIN Agences arr ON T.fk_id_agences_arrivee = arr.id_agences
+            WHERE T.GDH_depart > CURRENT_TIMESTAMP() AND T.nb_places_dispo >= 1
+            ORDER BY T.GDH_depart ASC
+        ";
+        $stmt = $pdo -> prepare($sql);
+        $stmt->execute();
+        return $stmt -> fetchAll(PDO::FETCH_ASSOC);
+    }
 };
-?>
