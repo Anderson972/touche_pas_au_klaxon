@@ -7,7 +7,9 @@
 <body>
 
 <header>
-    <a href="/login">Se connecter</a>
+    <span>Bonjour <?php echo $_SESSION['prenom']; ?> <?php echo $_SESSION['nom']; ?></span>
+    <a href="/connected/form_ride">Proposer un trajet</a>
+    <a href="/logout">Se déconnecter</a>
 </header>
 
 <h1>Liste des trajets disponibles</h1>

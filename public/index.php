@@ -22,7 +22,8 @@ Définition des routes
 
 // Route pour la page d'accueil
 $router -> get('/', function(){ 
-    echo "Hello World";
+    $TrajetController = new TrajetController();
+    $TrajetController -> home();
 });
 
 // Routes pour la creation de trajet
@@ -43,6 +44,16 @@ $router -> get('/login', function(){
 $router -> post('/login', function(){
     $AuthController = new AuthController();
     $AuthController -> login();
+});
+$router -> get('/logout', function(){
+    $AuthController = new AuthController();
+    $AuthController -> logout();
+});
+
+// Route accueil utilisateur connecté
+$router -> get('/connected', function(){ 
+    $TrajetController = new TrajetController();
+    $TrajetController -> homeConnected();
 });
 
 $router->run();
