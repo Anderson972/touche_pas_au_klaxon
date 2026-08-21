@@ -45,4 +45,10 @@ $router -> post('/login', function(){
     $AuthController -> login();
 });
 
+// Route accueil utilisateur connecté
+$router -> get('/connected', function(){ 
+    $TrajetController = new TrajetController();
+    $TrajetController -> homeConnected();
+});
+
 $router->run();
