@@ -22,7 +22,8 @@ Définition des routes
 
 // Route pour la page d'accueil
 $router -> get('/', function(){ 
-    echo "Hello World";
+    $TrajetController = new TrajetController();
+    $TrajetController -> home();
 });
 
 // Routes pour la creation de trajet

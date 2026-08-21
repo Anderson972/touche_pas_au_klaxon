@@ -68,4 +68,11 @@ class TrajetController
         $rides = $trajetModel -> findRides();
         require __DIR__.'/../../Template/connected.php';
     }
+
+    public function home()
+    {
+        $trajetModel = new TrajetModel();
+        $rides = $trajetModel -> findRides();
+        require __DIR__.'/../../Template/home.php';
+    }
 };
