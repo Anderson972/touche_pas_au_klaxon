@@ -2,11 +2,17 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Créer un trajet</title>
+    <title><?php echo isset($data) ? 'Modifier': 'Créer' ?> un trajet</title>
 </head>
 <body>
 
-<h1>Proposer un trajet</h1>
+<h1><?php echo isset($data) ? 'Modifier': 'Proposer' ?> un trajet</h1>
+
+<?php
+    if (isset($_SESSION['message'])) {
+    echo $_SESSION['message'];
+    unset($_SESSION['message']);
+}?>
 
 <form>
     <div class="mb-3 row">
@@ -35,37 +41,35 @@
     </div>
 </form>
 
-<form action="/connected/form_ride/create_ride" method="POST">
-<?php
-    if (isset($_SESSION['message'])) {
-    echo $_SESSION['message'];
-    unset($_SESSION['message']);
-}?>
+<form action="/connected/form_ride/<?php echo isset($data) ? $data['id_trajets'].'/update_ride':'create_ride' ?>" method="POST">
+
 
     <label for="gdh_depart">Date et heure de départ</label>
-    <input type="datetime-local" name="gdh_depart" id="gdh_depart" required>
+    <input type="datetime-local" name="gdh_depart" id="gdh_depart" value="<?php echo isset($data) ? $data['GDH_depart']: '' ?>" required>
 
     <label for="gdh_arrivee">Date et heure d'arrivée</label>
-    <input type="datetime-local" name="gdh_arrivee" id="gdh_arrivee" required>
+    <input type="datetime-local" name="gdh_arrivee" id="gdh_arrivee" value="<?php echo isset($data) ? $data['GDH_arrivee']: '' ?>" required>
 
     <label for="agence_depart">Agence de départ</label>
     <select name="agence_depart" id="agence_depart" required>
         <?php foreach ($agencies as $value) {
-           echo'  <option value="'.$value['id_agences'].'">'.$value['villes'].'</option>';
+            $selected = (isset($data) && $data['fk_id_agences_depart'] == $value['id_agences']) ? 'selected' : '';
+            echo '<option value="'.$value['id_agences'].'" '.$selected.'>'.$value['villes'].'</option>';
         } ?>
     </select>
 
     <label for="agence_arrivee">Agence d'arrivée</label>
     <select name="agence_arrivee" id="agence_arrivee" required>
         <?php foreach ($agencies as $value) {
-           echo'  <option value="'.$value['id_agences'].'">'.$value['villes'].'</option>';
+            $selected = (isset($data) && $data['fk_id_agences_arrivee'] == $value['id_agences']) ? 'selected' : '';
+            echo'  <option value="'.$value['id_agences'].'" '.$selected.'>'.$value['villes'].'</option>';
         } ?>
     </select>
 
     <label for="place_totale">Nombre de places totales</label>
-    <input type="number" name="place_totale" id="place_totale" min="1" required>
+    <input type="number" name="place_totale" id="place_totale" min="1" value="<?php echo isset($data) ? $data['nb_places_total']: '' ?>" required>
 
-    <button type="submit">Créer le trajet</button>
+    <button type="submit"><?php echo isset($data) ? 'Modifier': 'Créer' ?> le trajet</button>
 </form>
 
 </body>
