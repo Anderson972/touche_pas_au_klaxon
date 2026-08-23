@@ -55,5 +55,25 @@ $router -> get('/connected', function(){
     $TrajetController = new TrajetController();
     $TrajetController -> homeConnected();
 });
+// Route pour infos supp. dans la modale
+$router -> get('/connected/detail/:id', function($id){ 
+    $TrajetController = new TrajetController();
+    $TrajetController -> modalConnected($id);
+});
+
+$router -> get('/connected/form_ride/:id', function($id){ 
+    $TrajetController = new TrajetController();
+    $TrajetController -> dataRide($id);
+});
+
+$router -> post('/connected/form_ride/:id/update_ride', function($id){ 
+    $TrajetController = new TrajetController();
+    $TrajetController -> update($id);
+});
+
+$router -> post('/connected/delete_ride/:id', function($id){ 
+    $TrajetController = new TrajetController();
+    $TrajetController -> delete($id);
+});
 
 $router->run();
