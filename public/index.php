@@ -1,7 +1,11 @@
 <?php
+
+use Anderson\TouchePasAuKlaxon\Controllers\AdminController;
+use Anderson\TouchePasAuKlaxon\Controllers\AgenceController;
 use Anderson\TouchePasAuKlaxon\Controllers\TrajetController;
 use Buki\Router\Router; 
 use Anderson\TouchePasAuKlaxon\Controllers\AuthController;
+use Anderson\TouchePasAuKlaxon\Controllers\UserController;
 use Anderson\TouchePasAuKlaxon\Models\UserModel;
 
 require_once __DIR__ . '/../vendor/autoload.php';
@@ -74,6 +78,61 @@ $router -> post('/connected/form_ride/:id/update_ride', function($id){
 $router -> post('/connected/delete_ride/:id', function($id){ 
     $TrajetController = new TrajetController();
     $TrajetController -> delete($id);
+});
+
+$router -> get('/admin', function(){ 
+    $AdminController = new AdminController();
+    $AdminController -> adminHome();
+});
+
+$router -> get('/admin/users', function(){ 
+    $UserController = new UserController();
+    $UserController -> listUsers();
+});
+
+$router -> get('/admin/agencies', function(){ 
+    $AgenceController = new AgenceController();
+    $AgenceController -> listAgencies();
+});
+
+$router -> get('/admin/agencies/form_agency', function(){ 
+    $AdminController = new AdminController();
+    $AdminController -> adminFormAgency();
+});
+
+$router -> post('/admin/agencies/form_agency/create_agency', function(){ 
+    $AgenceController = new AgenceController();
+    $AgenceController -> create();
+});
+
+$router -> get('/admin/agencies/form_agency/:id', function($id){ 
+    $AgenceController = new AgenceController();
+    $AgenceController -> agencyData($id);
+});
+
+$router -> post('/admin/agencies/form_agency/:id/update_agency', function($id){ 
+    $AgenceController = new AgenceController();
+    $AgenceController -> update($id);
+});
+
+$router -> post('/admin/agencies/delete_agency/:id', function($id){ 
+    $AgenceController = new AgenceController();
+    $AgenceController -> delete($id);
+});
+
+$router -> get('/admin/rides', function(){ 
+    $TrajetController = new TrajetController;
+    $TrajetController -> adminRides();
+});
+
+$router -> get('/admin/rides/detail/:id', function($id){ 
+    $TrajetController = new TrajetController;
+    $TrajetController -> modalConnected($id);
+});
+
+$router -> post('/admin/rides/delete_ride/:id', function($id){ 
+    $TrajetController = new TrajetController;
+    $TrajetController -> adminDelete($id);
 });
 
 $router->run();

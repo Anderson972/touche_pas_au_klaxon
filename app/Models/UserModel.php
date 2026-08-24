@@ -11,19 +11,19 @@ class UserModel
     {
         $pdo = Database::getConnection();
 
-        $sql = "SELECT * FROM `Users` WHERE `email` = :email";
+        $sql = "SELECT * FROM Users WHERE email = :email";
         $stmt = $pdo -> prepare($sql);
         $stmt -> execute([':email'=>$email]);
         return $stmt -> fetch(PDO::FETCH_ASSOC);
     }
 
-    public function findById($id)
+    public function findUsers()
     {
         $pdo = Database::getConnection();
 
-        $sql = "SELECT `nom`, `prenom`, `telephone`, `email` FROM `Users` WHERE `id_users` = :id";
+        $sql = "SELECT nom, prenom, telephone, email FROM Users";
         $stmt = $pdo -> prepare($sql);
-        $stmt -> execute([':id'=>$id]);
-        return $stmt -> fetch(PDO::FETCH_ASSOC);
+        $stmt -> execute();
+        return $stmt -> fetchAll(PDO::FETCH_ASSOC);
     }
 };

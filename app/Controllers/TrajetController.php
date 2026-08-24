@@ -5,7 +5,6 @@ namespace Anderson\TouchePasAuKlaxon\Controllers;
 use Anderson\TouchePasAuKlaxon\Models\TrajetModel;
 use Anderson\TouchePasAuKlaxon\Models\AgenceModel;
 use Anderson\TouchePasAuKlaxon\Core\Access;
-use Anderson\TouchePasAuKlaxon\Models\UserModel;
 use DateTime;
 
 class TrajetController
@@ -120,8 +119,6 @@ class TrajetController
 
         $trajetModel = new TrajetModel();
         $rides = $trajetModel -> findRides();
-
-        
         require __DIR__.'/../../Template/connected.php';
     }
 
@@ -163,4 +160,38 @@ class TrajetController
        header('Location: /connected');
        exit();
     }
+
+    /* 
+    ---------------------------------------
+                Admin
+    ---------------------------------------
+     */
+
+    public function adminRides()
+    {
+        Access::adminAccess();
+
+        $trajetModel = new TrajetModel();
+        $rides = $trajetModel -> findAllRides();
+        require __DIR__.'/../../Template/admin_rides.php';
+    }
+
+    public function adminDelete($idTrajet)
+    {
+        Access::adminAccess();
+
+        $trajetModel = new TrajetModel();
+
+        $success = $trajetModel-> deleteRideAdmin($idTrajet);
+
+        if ($success) {
+            $_SESSION['message'] = 'Trajet supprimer avec succès !';
+        } else {
+            $_SESSION['message'] = 'Erreur lors de la suppression du trajet !';
+        }
+
+       header('Location: /admin/rides');
+       exit();
+    }
+
 };

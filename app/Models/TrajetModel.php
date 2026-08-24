@@ -91,7 +91,7 @@ class TrajetModel
     {
         $pdo = Database::getConnection();
 
-        $sql = "SELECT usr.nom, usr.prenom, usr.telephone, usr.email 
+        $sql = "SELECT usr.nom, usr.prenom, usr.telephone, usr.email, T.nb_places_total
                 FROM Trajets T 
                 LEFT JOIN Users usr on T.fk_id_users=usr.id_users 
                 WHERE T.id_trajets = :id_trajets;
@@ -110,6 +110,48 @@ class TrajetModel
         $stmt->execute([
             ':id_trajet' => $idTrajet,
             ':auteur' => $auteur
+            ]);
+        $count = $stmt -> rowCount();
+        if ($count>0) {
+            return true;
+        }else {return false;};
+    }
+    /*
+    ---------------------------------------------
+                Admin
+    ---------------------------------------------            
+     */
+
+    public function findAllRides()
+    {
+        $pdo = Database::getConnection();
+
+        $sql = "SELECT 
+            dep.villes AS ville_depart,
+            T.GDH_depart,
+            arr.villes AS ville_arrivee,
+            T.GDH_arrivee,
+            T.nb_places_dispo,
+            T.id_trajets,
+            T.fk_id_users
+            FROM Trajets T
+            JOIN Agences dep ON T.fk_id_agences_depart = dep.id_agences
+            JOIN Agences arr ON T.fk_id_agences_arrivee = arr.id_agences
+            ORDER BY T.GDH_depart ASC
+        ";
+        $stmt = $pdo -> prepare($sql);
+        $stmt->execute();
+        return $stmt -> fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function deleteRideAdmin($idTrajet)
+    {
+        $pdo = Database::getConnection();
+
+        $sql = "DELETE FROM Trajets WHERE Trajets.id_trajets = :id_trajet";
+        $stmt = $pdo -> prepare($sql);
+        $stmt->execute([
+            ':id_trajet' => $idTrajet
             ]);
         $count = $stmt -> rowCount();
         if ($count>0) {

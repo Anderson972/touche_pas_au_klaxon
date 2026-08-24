@@ -1,10 +1,10 @@
 <?php require __DIR__.'/partials/head.php'; ?>
-<title>Trajets disponibles</title>
+    <title>Liste Trajets</title>
 </head>
 <body>
-    <?php require __DIR__.'/partials/header_connected.php'; ?>
+    <?php require __DIR__.'/partials/header_admin.php'; ?>
     <main>
-        <h1>Liste des trajets disponibles</h1>
+        <h1>Liste des trajets</h1>
         <?php
             if (isset($_SESSION['message'])) {
             echo $_SESSION['message'];
@@ -30,16 +30,9 @@
                         <td><?php echo $ride['nb_places_dispo']; ?></td>
                         <td><button data-id-trajet="<?php echo $ride['id_trajets']; ?>" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detailRideModal">En savoir plus...</button></td>
                         <td>
-                            <?php if ($_SESSION['id_user'] == $ride['fk_id_users']) { ?>
-                                <a href="/connected/form_ride/<?php echo $ride['id_trajets']; ?>">Modifier</a>
-                            <?php } ?>
-                        </td>
-                        <td>
-                            <?php if ($_SESSION['id_user'] == $ride['fk_id_users']) { ?>
-                                <form action="/connected/delete_ride/<?php echo $ride['id_trajets'];?>" method="post">
-                                    <button type="submit">Supprimer</button>
-                                </form>
-                            <?php } ?>
+                            <form action="/admin/rides/delete_ride/<?php echo $ride['id_trajets'];?>" method="post">
+                                <button type="submit">Supprimer</button>
+                            </form>
                         </td>
                     </tr>
                 <?php } ?>
@@ -63,8 +56,8 @@
                 </div>
             </div>
         </div>
+        <script src="/js/ride_details.js"></script>
     </main>
     <?php require __DIR__.'/partials/footer.php'; ?>
-    <script src="/js/ride_details.js"></script>
 </body>
 </html>

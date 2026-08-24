@@ -25,8 +25,13 @@ class AuthController
                 $_SESSION['telephone'] = $user['telephone'];
                 $_SESSION['email'] = $user['email'];
                 $_SESSION['role'] = $user['role'];
-                header('Location: /connected');
-                exit();
+                if ($user['role'] == 'admin') {
+                    header('Location: /admin');
+                    exit();
+                }else{
+                    header('Location: /connected');
+                    exit();
+                }
             }else {
                 $_SESSION['message'] = 'Le mot de passe est incorrecte';
                 header('Location: /login');
