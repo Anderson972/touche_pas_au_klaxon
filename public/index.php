@@ -1,5 +1,6 @@
 <?php
 
+use Anderson\TouchePasAuKlaxon\Controllers\AdminController;
 use Anderson\TouchePasAuKlaxon\Controllers\AgenceController;
 use Anderson\TouchePasAuKlaxon\Controllers\TrajetController;
 use Buki\Router\Router; 
@@ -80,7 +81,8 @@ $router -> post('/connected/delete_ride/:id', function($id){
 });
 
 $router -> get('/admin', function(){ 
-    require __DIR__.'/../Template/admin.php';
+    $AdminController = new AdminController();
+    $AdminController -> adminHome();
 });
 
 $router -> get('/admin/users', function(){ 
@@ -94,7 +96,8 @@ $router -> get('/admin/agencies', function(){
 });
 
 $router -> get('/admin/agencies/form_agency', function(){ 
-    require __DIR__.'/../Template/form_agency.php';
+    $AdminController = new AdminController();
+    $AdminController -> adminFormAgency();
 });
 
 $router -> post('/admin/agencies/form_agency/create_agency', function(){ 

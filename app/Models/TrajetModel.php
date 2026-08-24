@@ -91,7 +91,7 @@ class TrajetModel
     {
         $pdo = Database::getConnection();
 
-        $sql = "SELECT usr.nom, usr.prenom, usr.telephone, usr.email 
+        $sql = "SELECT usr.nom, usr.prenom, usr.telephone, usr.email, T.nb_places_total
                 FROM Trajets T 
                 LEFT JOIN Users usr on T.fk_id_users=usr.id_users 
                 WHERE T.id_trajets = :id_trajets;
