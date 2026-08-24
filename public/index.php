@@ -1,4 +1,6 @@
 <?php
+
+use Anderson\TouchePasAuKlaxon\Controllers\AgenceController;
 use Anderson\TouchePasAuKlaxon\Controllers\TrajetController;
 use Buki\Router\Router; 
 use Anderson\TouchePasAuKlaxon\Controllers\AuthController;
@@ -84,6 +86,35 @@ $router -> get('/admin', function(){
 $router -> get('/admin/users', function(){ 
     $UserController = new UserController();
     $UserController -> listUsers();
+});
+
+$router -> get('/admin/agencies', function(){ 
+    $AgenceController = new AgenceController();
+    $AgenceController -> listAgencies();
+});
+
+$router -> get('/admin/agencies/form_agency', function(){ 
+    require __DIR__.'/../Template/form_agency.php';
+});
+
+$router -> post('/admin/agencies/form_agency/create_agency', function(){ 
+    $AgenceController = new AgenceController();
+    $AgenceController -> create();
+});
+
+$router -> get('/admin/agencies/form_agency/:id', function($id){ 
+    $AgenceController = new AgenceController();
+    $AgenceController -> agencyData($id);
+});
+
+$router -> post('/admin/agencies/form_agency/:id/update_agency', function($id){ 
+    $AgenceController = new AgenceController();
+    $AgenceController -> update($id);
+});
+
+$router -> post('/admin/agencies/delete_agency/:id', function($id){ 
+    $AgenceController = new AgenceController();
+    $AgenceController -> delete($id);
 });
 
 $router->run();
