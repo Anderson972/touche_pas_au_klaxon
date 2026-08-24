@@ -80,7 +80,7 @@ $router -> post('/connected/delete_ride/:id', function($id){
 });
 
 $router -> get('/admin', function(){ 
-    echo 'dashboard';
+    require __DIR__.'/../Template/admin.php';
 });
 
 $router -> get('/admin/users', function(){ 
@@ -115,6 +115,21 @@ $router -> post('/admin/agencies/form_agency/:id/update_agency', function($id){
 $router -> post('/admin/agencies/delete_agency/:id', function($id){ 
     $AgenceController = new AgenceController();
     $AgenceController -> delete($id);
+});
+
+$router -> get('/admin/rides', function(){ 
+    $TrajetController = new TrajetController;
+    $TrajetController -> adminRides();
+});
+
+$router -> get('/admin/rides/detail/:id', function($id){ 
+    $TrajetController = new TrajetController;
+    $TrajetController -> modalConnected($id);
+});
+
+$router -> post('/admin/rides/delete_ride/:id', function($id){ 
+    $TrajetController = new TrajetController;
+    $TrajetController -> adminDelete($id);
 });
 
 $router->run();

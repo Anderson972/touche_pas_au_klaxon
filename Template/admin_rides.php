@@ -37,7 +37,7 @@
                 <td><?php echo $ride['ville_arrivee']; ?></td>
                 <td><?php echo $ride['GDH_arrivee']; ?></td>
                 <td><?php echo $ride['nb_places_dispo']; ?></td>
-                <td><a href="/connected/detail/<?php echo $ride['id_trajets']; ?>">En savoir plus...</a></td>
+                <td><a href="/admin/rides/detail/<?php echo $ride['id_trajets']; ?>">En savoir plus...</a></td>
                 <td>
                     <form action="/admin/rides/delete_ride/<?php echo $ride['id_trajets'];?>" method="post">
                         <button type="submit">Supprimer</button>
