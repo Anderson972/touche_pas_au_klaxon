@@ -5,7 +5,6 @@ namespace Anderson\TouchePasAuKlaxon\Controllers;
 use Anderson\TouchePasAuKlaxon\Models\TrajetModel;
 use Anderson\TouchePasAuKlaxon\Models\AgenceModel;
 use Anderson\TouchePasAuKlaxon\Core\Access;
-use Anderson\TouchePasAuKlaxon\Models\UserModel;
 use DateTime;
 
 class TrajetController

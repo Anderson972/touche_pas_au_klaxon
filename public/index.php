@@ -2,6 +2,7 @@
 use Anderson\TouchePasAuKlaxon\Controllers\TrajetController;
 use Buki\Router\Router; 
 use Anderson\TouchePasAuKlaxon\Controllers\AuthController;
+use Anderson\TouchePasAuKlaxon\Controllers\UserController;
 use Anderson\TouchePasAuKlaxon\Models\UserModel;
 
 require_once __DIR__ . '/../vendor/autoload.php';
@@ -74,6 +75,15 @@ $router -> post('/connected/form_ride/:id/update_ride', function($id){
 $router -> post('/connected/delete_ride/:id', function($id){ 
     $TrajetController = new TrajetController();
     $TrajetController -> delete($id);
+});
+
+$router -> get('/admin', function(){ 
+    echo 'dashboard';
+});
+
+$router -> get('/admin/users', function(){ 
+    $UserController = new UserController();
+    $UserController -> listUsers();
 });
 
 $router->run();
