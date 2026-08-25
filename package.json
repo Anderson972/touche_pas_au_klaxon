@@ -1,0 +1,29 @@
+{
+  "name": "touche_pas_au_klaxon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "sass Public/scss/main.scss:Public/css/main.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anderson972/touche_pas_au_klaxon.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Anderson972/touche_pas_au_klaxon/issues"
+  },
+  "homepage": "https://github.com/Anderson972/touche_pas_au_klaxon#readme",
+  "devDependencies": {
+    "bootstrap": "^5.3.8",
+    "sass": "^1.103.1"
+  },
+  "dependencies": {
+    "bootstrap-icons": "^1.13.1"
+  }
+}

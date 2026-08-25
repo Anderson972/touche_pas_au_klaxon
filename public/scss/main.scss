@@ -1,0 +1,13 @@
+// variables personnalisées
+$primary:   #0074c7;
+$secondary: #384050;
+$danger:    #cd2c2e;
+$success:   #82b864;
+$light:     #f1f8fc;
+$dark:      #00497c;
+
+// Import des sources Bootstrap 
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+$bootstrap-icons-font-dir: "/fonts";
+@import "../../node_modules/bootstrap-icons/font/bootstrap-icons";
