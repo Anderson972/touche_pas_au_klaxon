@@ -4,10 +4,18 @@ namespace Anderson\TouchePasAuKlaxon\Controllers;
 
 use Anderson\TouchePasAuKlaxon\Core\Access;
 use Anderson\TouchePasAuKlaxon\Models\AgenceModel;
-use PhpParser\Node\Stmt\TryCatch;
 
+
+/**
+ * Controller gérant les agences côté administrateur.
+ */
 class AgenceController
 {
+    /**
+     * Affiche la liste des agences pour l'administrateur.
+     *
+     * @return void
+     */
     public function listAgencies()
     {
         Access::adminAccess();
@@ -17,6 +25,14 @@ class AgenceController
         require __DIR__.'/../../Template/admin_agencies.php';
     }
 
+    /**
+     * Traite la soumission du formulaire de création d'une agence.
+     *
+     * Bloque la création si une agence du même nom (normalisé en casse)
+     * existe déjà.
+     *
+     * @return void
+     */
     public function create()
     {
         Access::adminAccess();
@@ -43,6 +59,12 @@ class AgenceController
        exit();
     }
 
+    /**
+     * Affiche le formulaire de modification d'une agence, pré-rempli.
+     *
+     * @param int $idAgence Identifiant de l'agence à modifier.
+     * @return void
+     */
     public function agencyData($idAgence)
     {
         Access::adminAccess();
@@ -52,6 +74,14 @@ class AgenceController
         require __DIR__.'/../../Template/form_agency.php';
     }
 
+    /**
+     * Traite la soumission du formulaire de modification d'une agence.
+     *
+     * Bloque la modification si une autre agence porte déjà le même nom.
+     *
+     * @param int $idAgence Identifiant de l'agence à modifier.
+     * @return void
+     */
     public function update($idAgence)
     {
         Access::adminAccess();
@@ -81,6 +111,16 @@ class AgenceController
        exit();
     }
 
+    /**
+     * Traite la suppression d'une agence.
+     *
+     * Intercepte l'exception levée si l'agence est encore référencée
+     * par un trajet (contrainte de clé étrangère), pour afficher un
+     * message clair plutôt que de forcer la suppression.
+     *
+     * @param int $idAgence Identifiant de l'agence à supprimer.
+     * @return void
+     */
     public function delete($idAgence)
     {
         Access::adminAccess();

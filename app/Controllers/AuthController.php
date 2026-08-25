@@ -4,8 +4,19 @@ namespace Anderson\TouchePasAuKlaxon\Controllers;
 
 use Anderson\TouchePasAuKlaxon\Models\UserModel;
 
+/**
+ * Controller gérant l'authentification (connexion et déconnexion).
+ */
 class AuthController
 {
+    /**
+     * Traite la soumission du formulaire de connexion.
+     *
+     * Vérifie l'email et le mot de passe, initialise la session en cas
+     * de succès, puis redirige vers /admin ou /connected selon le rôle.
+     *
+     * @return void
+     */
     public function login(){
 
         $userModel = new UserModel();
@@ -44,6 +55,11 @@ class AuthController
         }
     }
 
+    /**
+     * Déconnecte l'utilisateur en détruisant la session.
+     *
+     * @return void
+     */
     public function logout()
     {
         session_start();

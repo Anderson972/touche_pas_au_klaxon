@@ -4,10 +4,25 @@ namespace Anderson\TouchePasAuKlaxon\Core;
 
 use PDO;
 
+/**
+ * Classe de connexion à la base de données.
+ *
+ * Implémente un singleton PDO : une seule connexion est créée
+ * et réutilisée par tous les Models de l'application.
+ */
 class Database
 {
     private static ?PDO $instance = null;
 
+    /**
+     * Retourne l'instance PDO connectée à la base de données.
+     *
+     * Crée la connexion au premier appel à partir des variables
+     * d'environnement (.env), puis réutilise toujours cette même
+     * instance lors des appels suivants.
+     *
+     * @return PDO Instance PDO connectée, configurée en mode exceptions.
+     */
     public static function getConnection(): PDO
     {
         if (self::$instance === null) {
