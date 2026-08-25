@@ -27,7 +27,7 @@ class AgenceController
         foreach ($agencies as $agency){
             if (ucfirst(strtolower($_POST['ville'])) == $agency['villes']) {
                 $_SESSION['message'] = 'Cette agence existe déja !';
-                header('Location: /admin/agencies');
+                header('Location: /admin/agencies/form_agency');
                 exit();
             }
         }

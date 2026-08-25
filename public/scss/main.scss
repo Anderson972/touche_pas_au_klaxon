@@ -8,3 +8,6 @@ $dark:      #00497c;
 
 // Import des sources Bootstrap 
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+$bootstrap-icons-font-dir: "/fonts";
+@import "../../node_modules/bootstrap-icons/font/bootstrap-icons";
