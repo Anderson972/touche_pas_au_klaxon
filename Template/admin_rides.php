@@ -37,8 +37,8 @@
                         <td class="border-start-0 border-top-0 border-bottom-0 border-2"><?php echo date('h:i', strtotime($ride['GDH_arrivee'])); ?></td>
                         <td class="border-start-0 border-top-0 border-bottom-0 border-2"><?php echo $ride['nb_places_dispo']; ?></td>
                         <td><button data-id-trajet="<?php echo $ride['id_trajets']; ?>" class="btn" data-bs-toggle="modal" data-bs-target="#detailRideModal"><i class="bi bi-eye"></i></button>
-                            <button class="btn" data-bs-toggle="modal" data-bs-target="#deleteRideModal"><i class="bi bi-trash"></i></button>
-                            <div class="modal fade" id="deleteRideModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+                            <button class="btn" data-bs-toggle="modal" data-bs-target="#deleteRideModal_<?php echo $ride['id_trajets'];?>"><i class="bi bi-trash"></i></button>
+                            <div class="modal fade" id="deleteRideModal_<?php echo $ride['id_trajets'];?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">

@@ -26,8 +26,8 @@
                         <td class="border-start-0 border-top-0 border-bottom-0 border-2"><?php echo $agency['villes']; ?></td>
                         <td> 
                             <a class="btn link-secondary fs-4" href="/admin/agencies/form_agency/<?php echo $agency['id_agences']; ?>"><i class="bi bi-pencil-square"></i></a>
-                            <button class="btn link-secondary fs-4" type="submit" data-bs-toggle="modal" data-bs-target="#deleteAgencyModal"><i class="bi bi-trash"></i></button> 
-                            <div class="modal fade" id="deleteAgencyModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+                            <button class="btn link-secondary fs-4" type="submit" data-bs-toggle="modal" data-bs-target="#deleteAgencyModal_<?php echo $agency['id_agences']; ?>"><i class="bi bi-trash"></i></button> 
+                            <div class="modal fade" id="deleteAgencyModal_<?php echo $agency['id_agences']; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
