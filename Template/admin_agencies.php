@@ -27,27 +27,24 @@
                         <td> 
                             <a class="btn link-secondary fs-4" href="/admin/agencies/form_agency/<?php echo $agency['id_agences']; ?>"><i class="bi bi-pencil-square"></i></a>
                             <button class="btn link-secondary fs-4" type="submit" data-bs-toggle="modal" data-bs-target="#deleteAgencyModal"><i class="bi bi-trash"></i></button> 
-
                             <div class="modal fade" id="deleteAgencyModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <span>Voulez vous supprimer cette agence ?</span>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Non</button>
-                                                <form class="d-inline" action="/admin/agencies/delete_agency/<?php echo $agency['id_agences']; ?>" method="post"> 
-                                                    <button class="btn btn-outline-danger" type="submit">Oui</button> 
-                                                </form>
-                                            </div>
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <span>Voulez vous supprimer cette agence ?</span>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Non</button>
+                                            <form class="d-inline" action="/admin/agencies/delete_agency/<?php echo $agency['id_agences']; ?>" method="post"> 
+                                                <button class="btn btn-outline-danger" type="submit">Oui</button> 
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
-
-                            
+                            </div>
                         </td> 
                     </tr>
                 <?php } ?>

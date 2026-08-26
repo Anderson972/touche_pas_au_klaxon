@@ -5,7 +5,6 @@
     <?php require __DIR__.'/partials/header_connected.php'; ?>
     <main class="container min-vh-100">
         <h1 class="mb-3">Trajets proposés</h1>
-        
         <?php if (isset($_SESSION['message'])) { ?>
         <div class="alert alert-secondary fade show mb-3" id="flashMessage" role="alert">
             <?php 

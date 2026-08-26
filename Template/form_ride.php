@@ -34,8 +34,6 @@
             </div>
         </form>
         <form class=" row mb-3 w-50 bg-secondary-subtle border border-3 border-secondary rounded-3 p-3 mx-auto" action="/connected/form_ride/<?php echo isset($data) ? $data['id_trajets'].'/update_ride':'create_ride' ?>" method="POST">
-
-
             <div class="col-sm-6 mb-4">
                 <label class="fw-bold form-label" for="gdh_depart">Date et heure de départ</label>
                 <input class="form-control" type="datetime-local" name="gdh_depart" id="gdh_depart" value="<?php echo isset($data) ? $data['GDH_depart']: '' ?>" required>
@@ -44,7 +42,6 @@
                 <label class="fw-bold form-label" for="gdh_arrivee">Date et heure d'arrivée</label>
                 <input class="form-control" type="datetime-local" name="gdh_arrivee" id="gdh_arrivee" value="<?php echo isset($data) ? $data['GDH_arrivee']: '' ?>" required>
             </div>
-
             <div class="col-sm-6 mb-4">
                 <label class="fw-bold form-label" for="agence_depart">Agence de départ</label>
                 <select class="form-select" name="agence_depart" id="agence_depart" required>
@@ -63,7 +60,6 @@
                     } ?>
                 </select>
             </div>
-
             <div class="col-sm-6">
                 <label class="fw-bold form-label" for="place_totale">Nombre de places totales</label>
                 <input class="form-control" type="number" name="place_totale" id="place_totale" min="1" value="<?php echo isset($data) ? $data['nb_places_total']: '' ?>" required>
@@ -71,7 +67,6 @@
             <div class="col-sm-6 d-flex align-items-end justify-content-end">
                 <button class="btn btn-secondary" type="submit"><?php echo isset($data) ? 'Modifier': 'Créer' ?> le trajet</button>
             </div>
-
         </form>
     </main>
     <?php require __DIR__.'/partials/footer.php'; ?>
