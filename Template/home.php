@@ -5,7 +5,6 @@
     <?php require __DIR__.'/partials/header_home.php'; ?>
     <main class="container min-vh-100">
         <h1 class="mb-3">Trajets proposés</h1>
-
         <table class="table text-center border align-middle table-borderless table-striped table-hover">
             <thead class="bg-secondary text-white">
                 <tr>
