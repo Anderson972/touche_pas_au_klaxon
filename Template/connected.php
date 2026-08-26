@@ -41,8 +41,8 @@
                                 <a class="btn" href="/connected/form_ride/<?php echo $ride['id_trajets']; ?>"><i class="bi bi-pencil-square"></i></a>
                             <?php } ?>
                             <?php if ($_SESSION['id_user'] == $ride['fk_id_users']) { ?>
-                                <button class="btn" data-bs-toggle="modal" data-bs-target="#deleteRideModal"><i class="bi bi-trash"></i></button>
-                                <div class="modal fade" id="deleteRideModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+                                <button class="btn" data-bs-toggle="modal" data-bs-target="#deleteRideModal_<?php echo $ride['id_trajets'];?>"><i class="bi bi-trash"></i></button>
+                                <div class="modal fade" id="deleteRideModal_<?php echo $ride['id_trajets'];?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
